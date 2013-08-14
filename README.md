@@ -1,4 +1,4 @@
-#ANT+ Connector
+#ANT+/Mathematica Connector
 
 Connect to ANT+ devices from within Mathematica using this mathematica library. There are
 instructions for connecting devices in the sample notebook. Not all ANT+ device
