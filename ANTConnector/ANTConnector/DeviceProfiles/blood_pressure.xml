@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+	<InformativeText>
+		All blood pressure (BP) monitors are designed to take the user's blood pressure.
+		This is usually accomplished using a sphygmomanometer cuff, which is placed
+		around the user's upper arm at approximately the same height as the heart. 
+	</InformativeText>
+	<ChannelConfiguration>
+		<ChannelType>1</ChannelType>
+		<NetworkKey>B9A521FBBD72C345</NetworkKey>
+		<RFChannelFrequency>57</RFChannelFrequency>
+		<TransmissionType>5</TransmissionType>
+		<DeviceType>18</DeviceType>
+		<DeviceNumber>1-65535</DeviceNumber>
+		<ChannelPeriod>8192</ChannelPeriod>
+		<SearchTimeout>30</SearchTimeout>
+	</ChannelConfiguration>
+	<MainDataPages>
+	</MainDataPages>
+</Profile>

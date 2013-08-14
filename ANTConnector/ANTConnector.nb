@@ -1,0 +1,261 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8645,        252]
+NotebookOptionsPosition[      6957,        191]
+NotebookOutlinePosition[      7350,        208]
+CellTagsIndexPosition[      7307,        205]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[StyleBox["ANT+ Wireless", "Title"]], "Section",
+ CellChangeTimes->{{3.583083661727324*^9, 3.5830836989964523`*^9}, 
+   3.583083988119348*^9}],
+
+Cell[TextData[StyleBox["An ANT+ Connection Demonstration - Garmin Footpod", \
+"Subtitle"]], "Text",
+ CellChangeTimes->{{3.583083980385605*^9, 3.583084002359569*^9}, {
+  3.583084413684698*^9, 3.583084419942934*^9}, {3.583147582630371*^9, 
+  3.5831476340927973`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["System Requirements", "Section",
+ CellChangeTimes->{{3.583084435624608*^9, 3.58308444777414*^9}, {
+  3.583084482597372*^9, 3.583084482725375*^9}, {3.583084520125514*^9, 
+  3.583084521061378*^9}, {3.5830850000526323`*^9, 3.583085002396475*^9}, {
+  3.585309070556089*^9, 3.585309078586844*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Mac OS X or Windows with x86-64 architechture\
+\>", "Item",
+ CellChangeTimes->{{3.583084634273135*^9, 3.5830847170832777`*^9}, {
+  3.583084895327509*^9, 3.58308496025371*^9}, {3.583141448727166*^9, 
+  3.583141468230013*^9}, {3.583147268421873*^9, 3.583147367411875*^9}, {
+  3.585327565990466*^9, 3.5853276993163967`*^9}, {3.585327758092526*^9, 
+  3.585327783154154*^9}}],
+
+Cell["\<\
+ANT USB-m Stick connected to one of the USB ports in your computer\
+\>", "Item",
+ CellChangeTimes->{{3.583084634273135*^9, 3.5830847170832777`*^9}, {
+  3.583084895327509*^9, 3.58308496025371*^9}, {3.583141448727166*^9, 
+  3.583141468230013*^9}, {3.583147268421873*^9, 3.583147367411875*^9}, {
+  3.585327565990466*^9, 3.585327642214281*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Before you begin", "Section",
+ CellChangeTimes->{{3.585327802875699*^9, 3.5853278107376423`*^9}}],
+
+Cell["\<\
+Make sure no other ANT+ programs are currently running (e.g. Garmin ANT Agent \
+\[Copyright]), as only one application at a time may use the USB ANT-m Stick.\
+\
+\>", "Item",
+ CellChangeTimes->{{3.583084634273135*^9, 3.5830847170832777`*^9}, {
+  3.583084895327509*^9, 3.58308496025371*^9}, {3.583141448727166*^9, 
+  3.583141468230013*^9}, {3.583147268421873*^9, 3.583147367411875*^9}, {
+  3.585327565990466*^9, 3.5853276235042763`*^9}, {3.585327815521508*^9, 
+  3.585327834688483*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Initializing a connection to a specific device", "Section",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.58308498122231*^9, 3.583085014348394*^9}, 
+   3.585051650659067*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"$Path", ",", 
+    RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", "ANTConnector`"}]}], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ InitializationCell->True,
+ CellChangeTimes->{{3.583146857210574*^9, 3.583146858077592*^9}, 
+   3.5831469625035963`*^9, {3.583149287871319*^9, 3.583149316910581*^9}, {
+   3.5831624738080587`*^9, 3.583162476383918*^9}, {3.584980361990757*^9, 
+   3.5849803625243473`*^9}, {3.584980944504833*^9, 3.584980961376596*^9}, {
+   3.585051559203164*^9, 3.585051564643516*^9}, {3.585051635361951*^9, 
+   3.585051650659197*^9}}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Load the ANT Library", "Subsection",
+ CellChangeTimes->{{3.585051665743783*^9, 3.585051670829797*^9}, {
+  3.58505513126108*^9, 3.585055131404625*^9}}],
+
+Cell[BoxData[
+ RowBox[{"LoadANTLibrary", "[", "]"}]], "Input",
+ CellChangeTimes->{
+  3.583146962512488*^9, {3.583148303228253*^9, 3.583148304736149*^9}, {
+   3.583149184493289*^9, 3.583149197308365*^9}, {3.58368065216387*^9, 
+   3.583680658163512*^9}, {3.584981082311521*^9, 3.584981084221651*^9}, {
+   3.585051559204249*^9, 3.585051584626894*^9}, 3.5850516564880247`*^9, 
+   3.5850540340041733`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Connect a specific device", "Subsection",
+ CellChangeTimes->{{3.585051665743783*^9, 3.585051670829797*^9}, {
+  3.58505513126108*^9, 3.585055131404625*^9}, {3.585073659153228*^9, 
+  3.5850736669954243`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ANTDeviceConnect", "[", "\"\<SDM\>\"", "]"}]], "Input",
+ CellChangeTimes->{
+  3.583146962512488*^9, {3.583148303228253*^9, 3.583148304736149*^9}, {
+   3.583149184493289*^9, 3.583149197308365*^9}, {3.58368065216387*^9, 
+   3.583680658163512*^9}, {3.584981082311521*^9, 3.584981084221651*^9}, {
+   3.585051559204249*^9, 3.585051584626894*^9}, 3.5850516564880247`*^9, 
+   3.5850540340041733`*^9, {3.585073669348489*^9, 3.585073675436171*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Analyzing buffered data", "Section",
+ CellChangeTimes->{{3.583147477296398*^9, 3.583147492189377*^9}}],
+
+Cell["\<\
+You may also wish to buffer and anaylze data which is streaming from your \
+device, as is demonstrated below:\
+\>", "Text",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.583147510088233*^9, 3.583147575344603*^9}, 
+   3.5831476604280567`*^9, 3.5831494919885397`*^9}],
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "[", 
+  RowBox[{"ANTDeviceData", "[", "\"\<SDM\>\"", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5849811519377527`*^9, 3.584981155054884*^9}, {
+  3.585053997661281*^9, 3.5850540062435923`*^9}, {3.585068195197763*^9, 
+  3.585068198949121*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5853278713130913`*^9, 3.585327871322036*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Closing the connection", "Section",
+ CellChangeTimes->{{3.58308498122231*^9, 3.583085014348394*^9}, {
+  3.5830860580644703`*^9, 3.5830860632286243`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Close the connection the device\[CloseCurlyQuote]s channel before attempting \
+to connect to another device on the same channel.\
+\>", "Item",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.583145625680808*^9, 3.583145645790614*^9}, {
+  3.5831456856721087`*^9, 3.583145686464211*^9}, {3.583146379989553*^9, 
+  3.583146382507698*^9}, {3.58314968063531*^9, 3.58314972804981*^9}, {
+  3.584981221621789*^9, 3.584981221964408*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ANTCloseChannel", "[", "USERANTCHANNEL", "]"}], ";"}]], "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ CellChangeTimes->{{3.582634062242584*^9, 3.582634074779114*^9}, 
+   3.583086072975984*^9, {3.583145605739501*^9, 3.583145695978797*^9}}]
+}, Closed]],
+
+Cell[BoxData[
+ RowBox[{"ANTDeviceDisconnect", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.585074145113187*^9, 3.585074157338798*^9}}]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"Working",
+WindowSize->{1041, 668},
+WindowMargins->{{121, Automatic}, {Automatic, 17}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 155, 2, 99, "Section"],
+Cell[737, 26, 265, 4, 43, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1039, 35, 298, 4, 80, "Section"],
+Cell[CellGroupData[{
+Cell[1362, 43, 380, 7, 28, "Item"],
+Cell[1745, 52, 350, 6, 28, "Item"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2144, 64, 103, 1, 80, "Section"],
+Cell[2250, 67, 494, 9, 45, "Item"],
+Cell[CellGroupData[{
+Cell[2769, 80, 209, 3, 80, "Section",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[2981, 85, 681, 14, 46, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.},
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3699, 104, 156, 2, 36, "Subsection"],
+Cell[3858, 108, 400, 7, 28, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4295, 120, 212, 3, 44, "Subsection"],
+Cell[4510, 125, 463, 7, 28, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5022, 138, 108, 1, 80, "Section"],
+Cell[5133, 141, 304, 6, 30, "Text",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[5440, 149, 278, 5, 28, "Input"],
+Cell[5721, 156, 94, 1, 28, InheritFromParent]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5852, 162, 159, 2, 80, "Section"],
+Cell[CellGroupData[{
+Cell[6036, 168, 464, 8, 28, "Item",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[6503, 178, 290, 5, 44, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}]
+}, Closed]],
+Cell[6808, 186, 133, 2, 22, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

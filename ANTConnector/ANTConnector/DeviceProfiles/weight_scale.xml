@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+	<InformativeText>
+		The weight scale measures a user‟s weight and, if the scale has access
+		to more specific user information such as height and gender, then the 
+		scale may be able to calculate user specific information as well. The 
+		weight scale may broadcast this information to an ANT+ compatible 
+		receiver, or store it for transfer at a later date.
+	</InformativeText>
+	<ChannelConfiguration>
+		<ChannelType>0</ChannelType>
+		<NetworkKey>B9A521FBBD72C345</NetworkKey>
+		<RFChannelFrequency>57</RFChannelFrequency>
+		<TransmissionType>0</TransmissionType>
+		<DeviceType>119</DeviceType>
+		<DeviceNumber>0</DeviceNumber>
+		<ChannelPeriod>8192</ChannelPeriod>
+		<SearchTimeout>10</SearchTimeout>
+	</ChannelConfiguration>
+	<MainDataPages>
+		<Page>
+			<Number>1</Number>
+			<Name>Body Weight</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x01</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>User Profile Identification LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>User Profile Identification MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Capabilities Bit Field</Description>
+				<Length>1 Byte</Length>
+				<Value>Capabilities Bit Field</Value>
+				<Units>Binary</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>7</Number>
+						<Contents>Display: User Profile Exchange</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Display is not capable of user profile exchange</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Display is capable of user profile exchange</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>6</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>5</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>4</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>3</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>2</Number>
+						<Contents>Scale: ANT-FS Future Capability</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>1</Number>
+						<Contents>Scale: User Profile Exchange</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Scale can receive user profile</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Scale cannot receive user profile</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>0</Number>
+						<Contents>Scale: User Profile Selected</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>User profile has been selected on the scale</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>User profile has not been selected on the scale</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+				</Bits>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Body Weight LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Weight value = Weight (kg) * 100
+					e.g. Weight = 75 kg
+						Weight value = 7500
+					Special Values:
+					0xFFFF = Invalid
+					0xFFFE = Computing
+					This is a required field.
+				</Value>
+				<Units>0.01kg</Units>
+				<Rollover>Max Value: 65533 (655.33 kg)</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Body Weight MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Weight value = Weight (kg) * 100
+					e.g. Weight = 75 kg
+						Weight value = 7500
+					Special Values:
+					0xFFFF = Invalid
+					0xFFFE = Computing
+					This is a required field.
+				</Value>
+				<Units>0.01kg</Units>
+				<Rollover>Max Value: 65533 (655.33 kg)</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>2</Number>
+			<Name>Body Composition Percentage</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x02</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>User Profile Identification LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>User Profile Identification MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>% Hydration LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					% Hydration = Actual % Hydration * 100
+					e.g actual % hydration = 5%
+						% hydration value =5 * 100 = 500
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>0.01 %</Units>
+				<Rollover>10000 (i.e. 100.00%)</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>% Hydration MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					% Hydration = Actual % Hydration * 100
+					e.g actual % hydration = 5%
+						% hydration value =5 * 100 = 500
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>0.01 %</Units>
+				<Rollover>10000 (i.e. 100.00%)</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>% Body Fat LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					% Body Fat = Actual % Body Fat * 100
+					e.g actual % body fat = 15%
+						% body fat value =15 * 100 = 1500
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>0.01 %</Units>
+				<Rollover>10000 (i.e. 100.00%)</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>% Body Fat MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					% Body Fat = Actual % Body Fat * 100
+					e.g actual % body fat = 15%
+						% body fat value =15 * 100 = 1500
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>0.01 %</Units>
+				<Rollover>10000 (i.e. 100.00%)</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>3</Number>
+			<Name>Metabolic Information</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x02</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>User Profile Identification LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>User Profile Identification MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Active Metabolic Rate LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Active metabolic rate is the total amount of energy
+					required daily by the body to maintain the current
+					weight at the user's current activity level
+					Act_Met_Rate = Actual Act_Met_Rate * 4
+					e.g actual active met rate = 2300 kcal
+						active met rate value = 2300 * 4 = 9200
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>1/4 kcal</Units>
+				<Rollover>65532 (16383 kcal)</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Active Metabolic Rate MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Active metabolic rate is the total amount of energy
+					required daily by the body to maintain the current
+					weight at the user's current activity level
+					Act_Met_Rate = Actual Act_Met_Rate * 4
+					e.g actual active met rate = 2300 kcal
+						active met rate value = 2300 * 4 = 9200
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>1/4 kcal</Units>
+				<Rollover>65532 (16383 kcal)</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>% Body Fat LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					% Body Fat = Actual % Body Fat * 100
+					e.g actual % body fat = 5%
+						% body fat value =5 * 100 = 500
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>1/4 kcal</Units>
+				<Rollover>65532 (16383 kcal)</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Basal Metabolic Rate LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Basal metabolic rate is the daily amount of
+					energy needed by the body in its resting state.
+					Bas_Met_Rate = Actual Bas_Met_Rate * 4
+					e.g actual basal met rate = 1500 kcal
+						basal met rate value = 1500 * 4 = 6000
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>1/4 kcal</Units>
+				<Rollover>65532 (16383 kcal)</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>4</Number>
+			<Name>Body Composition Mass</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x04</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>User Profile Identification LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>User Profile Identification MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Muscle Mass LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Muscle Mass = Actual Muscle Mass (kg) * 100
+					e.g actual muscle mass = 23 kg
+						muscle mass = 23 * 100 = 2300
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>0.01 kg</Units>
+				<Rollover>65533 (655.33 kg)</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Muscle Mass MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Muscle Mass = Actual Muscle Mass (kg) * 100
+					e.g actual muscle mass = 23 kg
+						muscle mass = 23 * 100 = 2300
+					Special Values:
+						0xFFFF = Invalid
+						0xFFFE = Computing
+				</Value>
+				<Units>0.01 kg</Units>
+				<Rollover>65533 (655.33 kg)</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Bone Mass</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Bone Mass = Actual Bone Mass (kg) * 10
+					e.g actual bone mass = 8 kg
+						bone mass = 8 * 10 = 80
+					Special Values:
+						0xFF = Invalid
+						0xFE = Computing
+				</Value>
+				<Units>0.01 kg</Units>
+				<Rollover>253 (25.3 kg)</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>58</Number>
+			<Name>User Profile Data Page</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x3A - User Profile Page 58</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>User Profile Identification LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>User Profile Identification MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Unique user identifier enabling the scale and the display
+					device to associate data to a specific user.
+					Invalid Value: 0xFFFF
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>65535</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Capabilities Bit Field</Description>
+				<Length>1 Byte</Length>
+				<Value>Capabilities Bit Field</Value>
+				<Units>Binary</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>7</Number>
+						<Contents>Display: User Profile Exchange</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Display is not capable of user profile exchange</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Display is capable of user profile exchange</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>6</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>5</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>4</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>3</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>2</Number>
+						<Contents>Scale: ANT-FS Future Capability</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>1</Number>
+						<Contents>Scale: User Profile Exchange</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Scale can receive user profile</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Scale cannot receive user profile</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>0</Number>
+						<Contents>Scale: User Profile Selected</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>User profile has been selected on the scale</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>User profile has not been selected on the scale</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+				</Bits>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Gender (Bit 7)</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					0 = Female, 1 = Male
+					Set to 0 when no profile is assigned.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>7</Number>
+						<Contents>Gender</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Male</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Female</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+				</Bits>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Age (Bits 0 – 6)</Description>
+				<Length>7 Bits</Length>
+				<Value>
+					Age = 0 – 127 years
+					Set to 0x00 when no profile is assigned.
+				</Value>
+				<Units>Years</Units>
+				<Rollover>127</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>User Height</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Height in cm
+					Set to 0x00 when no profile is assigned.
+				</Value>
+				<Units>cm</Units>
+				<Rollover>255cm</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Descriptive Bit Field</Description>
+				<Length>1 Byte</Length>
+				<Value>Descriptive Bit Field</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>7</Number>
+						<Contents>Athlete</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Lifetime Athlete</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Standard</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>6</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>5</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>4</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>3</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>N/A</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>2,1,0</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>000</ValueBinary>
+								<Meaning>Sedentary, no exercise</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>001</ValueBinary>
+								<Meaning>
+									Light, occasional exercise or physical workload once every two weeks.
+									Average time spent in training sessions: Less than 40 min.
+									Time spent training per week: Up to 20 Minutes.
+								</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>010</ValueBinary>
+								<Meaning>
+									Light, occasional exercise or physical workload once every two weeks.
+									Average time spent in training sessions: Less than 1 hr.
+									Time spent training per week: 21-40 Minutes.
+								</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>011</ValueBinary>
+								<Meaning>
+									Light, occasional exercise or physical workload once a week.
+									Average time spent in training sessions: Less than 1 hr.
+									Time spent training per week: 41-60 Minutes.
+								</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>100</ValueBinary>
+								<Meaning>
+									￼￼￼Regular exercise or physical workload 3-5 /week.
+									Average time spent in training sessions: Up to 1 hr.
+									Time spent training per week: 1-5 hrs.
+								</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>101</ValueBinary>
+								<Meaning>
+									￼￼￼Regular exercise or physical workload 3-5 /week.
+									Average time spent in training sessions: 1-3 hrs.
+									Time spent training per week: 5-9hrs.
+								</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>110</ValueBinary>
+								<Meaning>￼￼￼
+									Regular exercise or physical workload 3-5 /week.
+									Average time spent in training sessions: 3-5 hrs.
+									Time spent training per week: More than 9 hours.
+								</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>111</ValueBinary>
+								<Meaning>Reserved/Invalid</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+				</Bits>
+			</Field>
+		</Page>
+	</MainDataPages>
+	<CommonDataPages>
+		<Page>
+			<Number>80</Number>
+			<Name>Manufacturer's Identification</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>HW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Serial Number (Bits 0 – 7)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Serial Number (Bits 8 – 15)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Serial Number (Bits 16 – 23)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Serial Number (Bits 24 – 31)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+		<Page>
+			<Number>81</Number>
+			<Name>Product Information</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>SW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Manufacturer ID LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Manufacturer ID MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Model Number LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Model Number MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+	</CommonDataPages>
+</Profile>

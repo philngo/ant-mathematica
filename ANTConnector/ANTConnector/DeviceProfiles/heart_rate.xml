@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+	<InformativeText>
+		A heart rate monitor is a body-worn device that allows the wearer to measure his or her
+		heart rate in real-time. Most heart rate monitors are worn around the chest and transmit
+		heart rate data to watches or other display devices
+	</InformativeText>
+	<ChannelConfiguration>
+		<ChannelType>0</ChannelType>
+		<NetworkKey>B9A521FBBD72C345</NetworkKey>
+		<RFChannelFrequency>57</RFChannelFrequency>
+		<TransmissionType>0</TransmissionType>
+		<DeviceType>120</DeviceType>
+		<DeviceNumber>0</DeviceNumber>
+		<ChannelPeriod>8070</ChannelPeriod>
+		<SearchTimeout>30</SearchTimeout>
+	</ChannelConfiguration>
+	<MainDataPages>
+		<Page>
+			<Number>0</Number>
+			<Name>Page 0 or Unknown Page Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Change Toggle</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					The transmitter must toggle this bit every 4
+					messages. The receiver may not interpret
+					bytes 0-3 until it has seen this bit set to 
+					both a 0 and a 1.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>7 Bits</Length>
+				<Value>Data Page Number = 0x00</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The transmitter shall set the value = 0xFF.
+					The receiver shall not interpret this data at this time.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The transmitter shall set the value = 0xFF.
+					The receiver shall not interpret this data at this time.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The transmitter shall set the value = 0xFF.
+					The receiver shall not interpret this data at this time.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Heart Beat Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Heart Beat Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Heart Beat Count</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A single byte value which increments with each heart beat event.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>255 counts</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Computed Heart Rate</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Instantaneous heart rate.
+					Invalid = 0x00
+					Valid Value = 1 – 255bpm.
+					This value is intended to be displayed by
+					the display device without further interpretation.
+				</Value>
+				<Units>￼bpm</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>1</Number>
+			<Name>Page 1 Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Change Toggle</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					The transmitter must toggle this bit every 4
+					messages. The receiver may not interpret
+					bytes 0-3 until it has seen this bit set to 
+					both a 0 and a 1.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>7 Bits</Length>
+				<Value>Data Page Number = 0x01</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Cumulative Operating Time (bits 0 - 7)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Increments every 2 seconds and is reset on battery replacement
+				</Value>
+				<Units>2 second intervals</Units>
+				<Rollover>33554430s</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Cumulative Operating Time (bits 8 - 15)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Increments every 2 seconds and is reset on battery replacement
+				</Value>
+				<Units>2 second intervals</Units>
+				<Rollover>33554430s</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Cumulative Operating Time (bits 16 - 23)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Increments every 2 seconds and is reset on battery replacement
+				</Value>
+				<Units>2 second intervals</Units>
+				<Rollover>33554430s</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Heart Beat Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Heart Beat Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Heart Beat Count</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A single byte value which increments with each heart beat event.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>255 counts</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Computed Heart Rate</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Instantaneous heart rate.
+					Invalid = 0x00
+					Valid Value = 1 – 255bpm.
+					This value is intended to be displayed by
+					the display device without further interpretation.
+				</Value>
+				<Units>￼bpm</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>2</Number>
+			<Name>Page 2 Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Change Toggle</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					The transmitter must toggle this bit every 4
+					messages. The receiver may not interpret
+					bytes 0-3 until it has seen this bit set to 
+					both a 0 and a 1.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>7 Bits</Length>
+				<Value>Data Page Number = 0x02</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Manufacturer ID</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Contact the ANT+ Alliance if you wish to be added to this list as a heart rate sensor manufacturer.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Serial Number LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					This is the upper 16 bits of a 32 bit serial number.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Serial Number MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					This is the upper 16 bits of a 32 bit serial number.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Heart Beat Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Heart Beat Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Heart Beat Count</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A single byte value which increments with each heart beat event.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>255 counts</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Computed Heart Rate</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Instantaneous heart rate.
+					Invalid = 0x00
+					Valid Value = 1 – 255bpm.
+					This value is intended to be displayed by
+					the display device without further interpretation.
+				</Value>
+				<Units>￼bpm</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>3</Number>
+			<Name>Page 3 Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Change Toggle</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					The transmitter must toggle this bit every 4
+					messages. The receiver may not interpret
+					bytes 0-3 until it has seen this bit set to 
+					both a 0 and a 1.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>7 Bits</Length>
+				<Value>Data Page Number = 0x02</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Hardware Version</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					To be set by the manufacturer.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Software Version</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					To be set by the manufacturer.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Model Number</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					To be set by the manufacturer.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Heart Beat Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Heart Beat Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Heart Beat Count</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A single byte value which increments with each heart beat event.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>255 counts</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Computed Heart Rate</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Instantaneous heart rate.
+					Invalid = 0x00
+					Valid Value = 1 – 255bpm.
+					This value is intended to be displayed by
+					the display device without further interpretation.
+				</Value>
+				<Units>￼bpm</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>4</Number>
+			<Name>Page 4 Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Change Toggle</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					The transmitter must toggle this bit every 4
+					messages. The receiver may not interpret
+					bytes 0-3 until it has seen this bit set to 
+					both a 0 and a 1.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>7 Bits</Length>
+				<Value>Data Page Number = 0x02</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Manufacturer Specific</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The receiver shall not interpret this field.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Previous Heart Beat Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the previous valid heart beat event.
+				</Value>
+				<Units>1/1024 second (s)</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Previous Heart Beat Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the previous valid heart beat event.
+				</Value>
+				<Units>1/1024 second (s)</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Heart Beat Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Heart Beat Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid heart beat event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Heart Beat Count</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A single byte value which increments with each heart beat event.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>255 counts</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Computed Heart Rate</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Instantaneous heart rate.
+					Invalid = 0x00
+					Valid Value = 1 – 255bpm.
+					This value is intended to be displayed by
+					the display device without further interpretation.
+				</Value>
+				<Units>￼bpm</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+	</MainDataPages>
+</Profile>

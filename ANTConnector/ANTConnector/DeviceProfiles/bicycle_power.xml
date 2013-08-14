@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+	<InformativeText>
+		A bike power sensor is a sensor that is mounted on a bicycle and that allows the cyclist
+		to measure his or her power output, which is the force required to move the bike forward
+		and is measured in Watts.
+	</InformativeText>
+	<ChannelConfiguration>
+		<ChannelType>0</ChannelType>
+		<NetworkKey>B9A521FBBD72C345</NetworkKey>
+		<RFChannelFrequency>57</RFChannelFrequency>
+		<TransmissionType>0</TransmissionType>
+		<DeviceType>11</DeviceType>
+		<DeviceNumber>0</DeviceNumber>
+		<ChannelPeriod>8182</ChannelPeriod>
+		<SearchTimeout>30</SearchTimeout>
+	</ChannelConfiguration>
+	<MainDataPages>
+		<Page>
+			<Number>16</Number>
+			<Name>Standard Power-Only Main Data Page</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x10: standard Power-Only message</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Update Event Count</Description>
+				<Length>1 Byte</Length>
+				<Value>Power event count</Value>
+				<Units>N/A</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Pedal Power</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Bit 7: Pedal Differentiation
+					1 - Right Pedal Power Contribution
+					0 – Unknown Pedal Power Contribution
+					Bits 0-6: Pedal Power Percent</Value>
+					Special Values:
+					0xFF – pedal power not used
+				</Value>
+				<Units>%</Units>
+				<Rollover>0-100%</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Instantaneous Cadence</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Crank cadence – if available
+					Otherwise: 0xFF indicates invalid
+				</Value>
+				<Units>RPM</Units>
+				<Rollover>Max=254RPM</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Accumulated Power LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated power
+					1-watt resolution
+				</Value>
+				<Units>Watts</Units>
+				<Rollover>65.5kW</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Accumulated Power MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated power
+					1-watt resolution
+				</Value>
+				<Units>Watts</Units>
+				<Rollover>65.5kW</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Instantaneous Power LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Instantaneous power
+					1-watt resolution
+				</Value>
+				<Units>Watts</Units>
+				<Rollover>￼Max=65.5kW</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Instantaneous Power MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Instantaneous power
+					1-watt resolution
+				</Value>
+				<Units>Watts</Units>
+				<Rollover>￼Max=65.5kW</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>17</Number>
+			<Name>Standard Wheel Torque Main Data Page</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x12 – sensor measures torque at wheel</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Update Event Count</Description>
+				<Length>1 Byte</Length>
+				<Value>Event counter increments with each information update.</Value>
+				<Units>N/A</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Wheel Ticks</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Wheel tick count increments with each crank revolution.
+				</Value>
+				<Units>Wheel revolutions</Units>
+				<Rollover>256 ticks ~550 meters</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Instantaneous Cadence</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Crank cadence – if available
+					Otherwise: 0xFF indicates invalid
+				</Value>
+				<Units>RPM</Units>
+				<Rollover>Max=254RPM</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Wheel Period LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated wheel period (updated each event)
+				</Value>
+				<Units>1/2048s</Units>
+				<Rollover>32s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Wheel Period MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated wheel period (updated each event)
+				</Value>
+				<Units>1/2048s</Units>
+				<Rollover>32s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Accumulated Torque LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated torque (updated each event)
+				</Value>
+				<Units>1/32Nm</Units>
+				<Rollover>2048Nm</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Accumulated Torque MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated torque (updated each event)
+				</Value>
+				<Units>￼1/32Nm</Units>
+				<Rollover>￼￼2048Nm</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>18</Number>
+			<Name>Standard Crank Torque Main Data Page</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x11 – sensor measures torque at crank</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Update Event Count</Description>
+				<Length>1 Byte</Length>
+				<Value>Event counter increments with each information update.</Value>
+				<Units>N/A</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Crank Ticks</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Crank tick count increments with each wheel revolution.
+				</Value>
+				<Units>Crank revolutions</Units>
+				<Rollover>256 ticks ~550 meters</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Instantaneous Cadence</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Crank cadence – if available
+					Otherwise: 0xFF indicates invalid
+				</Value>
+				<Units>RPM</Units>
+				<Rollover>Max=254RPM</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Period LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated crank period (updated each event)
+				</Value>
+				<Units>1/2048s</Units>
+				<Rollover>32s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Period MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated crank period (updated each event)
+				</Value>
+				<Units>1/2048s</Units>
+				<Rollover>32s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Accumulated Torque LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated torque (updated each event)
+				</Value>
+				<Units>1/32Nm</Units>
+				<Rollover>2048Nm</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Accumulated Torque MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated torque (updated each event)
+				</Value>
+				<Units>￼1/32Nm</Units>
+				<Rollover>￼￼2048Nm</Rollover>
+		</Page>
+	</MainDataPages>
+	<CommonDataPages>
+		<Page>
+			<Number>70</Number>
+			<Name>Request Data Page</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Command ID</Description>
+				<Length>1 Byte</Length>
+				<Value>70 (0x46) – Data Page Request</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Subfield 1</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Subfield 2</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Requested Transmission Response</Description>
+				<Length>1 Byte</Length>
+				<Value>Refer to ANT+ Common Pages</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Requested Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Requested Summary Data Page Number</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Command Type</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 1 (0x01) for Request Data Page</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+		<Page>
+			<Number>80</Number>
+			<Name>Manufacturer's Identification</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>HW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Serial Number (Bits 0 – 7)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Serial Number (Bits 8 – 15)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Serial Number (Bits 16 – 23)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Serial Number (Bits 24 – 31)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+		<Page>
+			<Number>81</Number>
+			<Name>Product Information</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>SW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Manufacturer ID LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Manufacturer ID MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Model Number LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Model Number MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+	</CommonDataPages>
+</Profile>

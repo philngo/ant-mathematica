@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+	<InformativeText>
+		The fitness equipment has a relatively small pairing zone, marked by
+		the “Link Here” logo. A user begins a fitness session by approaching
+		the fitness equipment and entering the pairing zone. If the user is 
+		wearing a watch, pairing between the watch and equipment will occur 
+		when the user places their watch within close proximity to the “Link
+		Here” logo. Once pairing has been established, the range of 
+		communication between the watch and FE moves from the pairing zone 
+		to the tracking zone. The watch may wirelessly transfer user 
+		information and a workout or course file using ANT File Share 
+		(ANT-FS) technology and the Flexible and Interoperable Data Transfer
+		(FIT) protocol. The fitness equipment will then begin broadcasting 
+		real time workout data which may also include events such as workout
+		starts and stops, as well as lap events. The watch displays and
+		records data, and responds to any events (i.e. starting/stopping
+		chronometer and recording lap events).
+		speed ranges.  
+	</InformativeText>
+	<ChannelConfiguration>
+		<ChannelType>1</ChannelType>
+		<NetworkKey>B9A521FBBD72C345</NetworkKey>
+		<RFChannelFrequency>57</RFChannelFrequency>
+		<TransmissionType>5</TransmissionType>
+		<DeviceType>1</DeviceType>
+		<DeviceNumber>1-65535</DeviceNumber>
+		<ChannelPeriod>8192</ChannelPeriod>
+		<SearchTimeout>30</SearchTimeout>
+		<TrasmitPower>-10</TransmitPower>
+	</ChannelConfiguration>
+</Profile>

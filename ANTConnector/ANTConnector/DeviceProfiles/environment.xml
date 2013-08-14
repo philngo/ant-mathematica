@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+	<InformativeText>
+		The ANT+ environment sensor is a device that allows a variety of
+		environmental parameters to be measured. Data such as current temperature,
+		and 24 hour highs and/or lows may be transmitted to a collector device
+		for real time display, or stored on the environment sensor for later
+		download to a PC or other collecting device. 
+	</InformativeText>
+	<ChannelConfiguration>
+		<ChannelType>0</ChannelType>
+		<NetworkKey>B9A521FBBD72C345</NetworkKey>
+		<RFChannelFrequency>57</RFChannelFrequency>
+		<TransmissionType>0</TransmissionType>
+		<DeviceType>25</DeviceType>
+		<DeviceNumber>0</DeviceNumber>
+		<ChannelPeriod>8192</ChannelPeriod>
+		<SearchTimeout>45</SearchTimeout>
+	</ChannelConfiguration>
+	<MainDataPages>
+		<Page>
+			<Number>0</Number>
+			<Name>General Information</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x00</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Set to 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Set to 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Transmission Info</Description>
+				<Length>1 Byte</Length>
+				<Value>Transmission Info Bit Field</Value>
+				<Units>Binary</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>6,7</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>Default - Set values to 0</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>4,5</Number>
+						<Contents>Local Time</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>Local Time not supported</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>Local Time Supported, Not Set</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>Local Time Supported & Set</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>2,3</Number>
+						<Contents>UTC Time</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>System Time not supported</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>UTC Time Supported, Not Set</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>UTC Time Supported & Set</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>0,1</Number>
+						<Contents>Default Transmission Rate</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>default transmission rate of 0.5 Hz</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>default transmission rate of 4 Hz</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+				</Bits>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Supported Pages</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Bit Field representing main data pages supported.
+					Bit position refers to page number.
+					Bits 2:31 – Reserved. Set to 0.
+					Bit 1 – Page 1 Support
+					Bit 0 – Page 0 Support
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>0</Number>
+						<Contents>Page Support</Contents>
+						<Enumeration>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Page 0 Support</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Page 1 Support</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+				</Bits>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Supported Pages LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Bit Field representing main data pages supported.
+					Bit position refers to page number.
+					Bits 2:31 – Reserved. Set to 0.
+					Bit 1 – Page 1 Support
+					Bit 0 – Page 0 Support
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Supported Pages</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Bit Field representing main data pages supported.
+					Bit position refers to page number.
+					Bits 2:31 – Reserved. Set to 0.
+					Bit 1 – Page 1 Support
+					Bit 0 – Page 0 Support
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Supported Pages MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Bit Field representing main data pages supported.
+					Bit position refers to page number.
+					Bits 2:31 – Reserved. Set to 0.
+					Bit 1 – Page 1 Support
+					Bit 0 – Page 0 Support
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>1</Number>
+			<Name>Temperature</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x01</Value>
+				<Units>N/A</Units>
+				<MinMax>N/A</MinMax>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Set to 0xFF</Value>
+				<Units>N/A</Units>
+				<MinMax>N/A</MinMax>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Event Count</Description>
+				<Length>1 Byte</Length>
+				<Value>Increments with each measurement</Value>
+				<Units>N/A</Units>
+				<MinMax>N/A</MinMax>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>24 Hour Low LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Signed Integer representing the lowest temperature recorded over the last 24 hours (0x800 invalid)
+				</Value>
+				<Units>0.1°C</Units>
+				<MinMax>￼-204.7</MinMax>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>24 Hour Low MSN</Description>
+				<Length>Upper 4 bits</Length>
+				<Value>
+					Signed Integer representing the lowest temperature recorded over the last 24 hours (0x800 invalid)
+				</Value>
+				<Units>0.1°C</Units>
+				<MinMax>￼-204.7</MinMax>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>24 Hour High LSN</Description>
+				<Length>Lower 4 bits</Length>
+				<Value>
+					Signed Integer representing the highest temperature recorded over the last 24 hours (0x800 invalid)
+				</Value>
+				<Units>0.1°C</Units>
+				<MinMax>￼-204.7</MinMax>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>24 Hour High MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Signed Integer representing the highest temperature recorded over the last 24 hours (0x800 invalid)
+				</Value>
+				<Units>0.1°C</Units>
+				<MinMax>￼-204.7</MinMax>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Current Temp LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Signed Integer representing the current Temperature (0x8000 invalid)
+				</Value>
+				<Units>￼0.01°C</Units>
+				<MinMax>-204.7 to 204.7</MinMax>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Current Temp MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Signed Integer representing the current Temperature (0x8000 invalid)	
+				</Value>
+				<Units>￼0.01°C</Units>
+				<MinMax>-204.7 to 204.7</MinMax>
+			</Field>
+		</Page>
+	</MainDataPages>
+	<CommonDataPages>
+		<Page>
+			<Number>70</Number>
+			<Name>Request Data Page</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Command ID</Description>
+				<Length>1 Byte</Length>
+				<Value>70 (0x46) – Data Page Request</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Subfield 1</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Subfield 2</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Requested Transmission Response</Description>
+				<Length>1 Byte</Length>
+				<Value>Refer to ANT+ Common Pages</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Requested Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Requested Summary Data Page Number</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Command Type</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 1 (0x01) for Request Data Page</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+		<Page>
+			<Number>80</Number>
+			<Name>Manufacturer's Identification</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>HW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Serial Number (Bits 0 – 7)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Serial Number (Bits 8 – 15)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Serial Number (Bits 16 – 23)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Serial Number (Bits 24 – 31)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+		<Page>
+			<Number>81</Number>
+			<Name>Product Information</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>SW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Manufacturer ID LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Manufacturer ID MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Model Number LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Model Number MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+	</CommonDataPages>
+</Profile>

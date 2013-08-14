@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+	<InformativeText>
+		Bike speed sensors are devices mounted on a bicycle that measure the
+		speed the bicycle is traveling. This is typically done using a magnet
+		mounted on the wheel spokes and a sensor on the bicycle frame that
+		senses the magnet passing. Bike cadence sensors measure the speed at
+		which the user is pedaling, typically using a magnet attached to the
+		pedal shaft and a sensor mounted on the frame.
+	</InformativeText>
+	<ChannelConfiguration>
+		<ChannelType>0</ChannelType>
+		<NetworkKey>B9A521FBBD72C345</NetworkKey>
+		<RFChannelFrequency>57</RFChannelFrequency>
+		<TransmissionType>0</TransmissionType>
+		<DeviceType>123</DeviceType>
+		<DeviceNumber>0</DeviceNumber>
+		<ChannelPeriod>8118</ChannelPeriod>
+		<SearchTimeout>30</SearchTimeout>
+	</ChannelConfiguration>
+	<MainDataPages>
+		<Page>
+			<Number>0</Number>
+			<Name>Page 0 or Unknown Page Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Change Toggle</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					The transmitter must toggle this bit every 4
+					messages. The receiver may not interpret
+					bytes 0-3 until it has seen this bit set to 
+					both a 0 and a 1.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>7 Bits</Length>
+				<Value>Data Page Number = 0x00</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The transmitter shall set the value = 0xFF.
+					The receiver shall not interpret this data at this time.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The transmitter shall set the value = 0xFF.
+					The receiver shall not interpret this data at this time.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The transmitter shall set the value = 0xFF.
+					The receiver shall not interpret this data at this time.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Bike Speed Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid bike speed event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Bike Speed Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid bike speed event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Cumulative Speed Revolution Count LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the total number of wheel revolutions.
+				</Value>
+				<Units>Strides</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Cumulative Speed Revolution Count MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the total number of wheel revolutions.
+				</Value>
+				<Units>1/32 sec</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>1</Number>
+			<Name>Page 1 Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Change Toggle</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					The transmitter must toggle this bit every 4
+					messages. The receiver may not interpret
+					bytes 0-3 until it has seen this bit set to 
+					both a 0 and a 1.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>7 Bits</Length>
+				<Value>Data Page Number = 0x01</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Cumulative Operating Time (bits 0 - 7)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Increments every 2 seconds and is reset on battery replacement
+				</Value>
+				<Units>2 second intervals</Units>
+				<Rollover>33554430s</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Cumulative Operating Time (bits 8 - 15)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Increments every 2 seconds and is reset on battery replacement
+				</Value>
+				<Units>2 second intervals</Units>
+				<Rollover>33554430s</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Cumulative Operating Time (bits 16 - 23)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Increments every 2 seconds and is reset on battery replacement
+				</Value>
+				<Units>2 second intervals</Units>
+				<Rollover>33554430s</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Bike Speed Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid bike speed event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Bike Speed Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid bike speed event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Cumulative Speed Revolution Count LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the total number of wheel revolutions.
+				</Value>
+				<Units>Strides</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Cumulative Speed Revolution Count MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the total number of wheel revolutions.
+				</Value>
+				<Units>1/32 sec</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>2</Number>
+			<Name>Page 2 Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Change Toggle</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					The transmitter must toggle this bit every 4
+					messages. The receiver may not interpret
+					bytes 0-3 until it has seen this bit set to 
+					both a 0 and a 1.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>7 Bits</Length>
+				<Value>Data Page Number = 0x01</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Manufacturer ID</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Contact the ANT+ Alliance if you wish to be added to this list as a heart rate sensor manufacturer.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Serial Number LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					This is the upper 16 bits of a 32 bit serial number.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Serial Number MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					This is the upper 16 bits of a 32 bit serial number.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Bike Speed Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid bike speed event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Bike Speed Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid bike speed event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Cumulative Speed Revolution Count LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the total number of wheel revolutions.
+				</Value>
+				<Units>Strides</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Cumulative Speed Revolution Count MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the total number of wheel revolutions.
+				</Value>
+				<Units>1/32 sec</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>3</Number>
+			<Name>Page 3 Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Change Toggle</Description>
+				<Length>1 Bit</Length>
+				<Value>
+					The transmitter must toggle this bit every 4
+					messages. The receiver may not interpret
+					bytes 0-3 until it has seen this bit set to 
+					both a 0 and a 1.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>7 Bits</Length>
+				<Value>Data Page Number = 0x01</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Hardware Version</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					To be set by the manufacturer.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Software Version</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					To be set by the manufacturer.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Model Number</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					To be set by the manufacturer.
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Bike Speed Event Time LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid bike speed event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Bike Speed Event Time MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the time of the last valid bike speed event.
+				</Value>
+				<Units>1/1024 second</Units>
+				<Rollover>64s</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Cumulative Speed Revolution Count LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the total number of wheel revolutions.
+				</Value>
+				<Units>Strides</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Cumulative Speed Revolution Count MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Represents the total number of wheel revolutions.
+				</Value>
+				<Units>1/32 sec</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+	</MainDataPages>
+</Profile>

@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+	<InformativeText>
+		A stride based speed and distance monitor (SDM) is a personal body-worn device
+		that allows the wearer to measure the number of strides taken, the speed at 
+		which he or she is traveling and/or the distance he or she has covered based 
+		on stride measurements and calculations. 
+	</InformativeText>
+	<ChannelConfiguration>
+		<ChannelType>0</ChannelType>
+		<NetworkKey>B9A521FBBD72C345</NetworkKey>
+		<RFChannelFrequency>57</RFChannelFrequency>
+		<TransmissionType>0</TransmissionType>
+		<DeviceType>124</DeviceType>
+		<DeviceNumber>0</DeviceNumber>
+		<ChannelPeriod>8134</ChannelPeriod>
+		<SearchTimeout>30</SearchTimeout>
+	</ChannelConfiguration>
+	<MainDataPages>
+		<Page>
+			<Number>1</Number>
+			<Name>Main Format</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x01</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Time - Fractional</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Fractional SDM sensor time of the last distance and/or speed computation.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>1/200 sec</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Time - Integer</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					SDM time of the last distance and/or speed computation.
+					Time starts when SDM is powered ON and continues until it is powered OFF.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>Seconds (s)</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Distance - Integer</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated distance.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>meters (m)</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Distance - Fractional</Description>
+				<Length>Upper 4 bits</Length>
+				<Value>
+					Fractional distance.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>1/16 meters</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Instantaneous Speed - Integer</Description>
+				<Length>Lower 4 bits</Length>
+				<Value>
+					Instantaneous speed is intended to be appropriately filtered by the SDM,
+					such that the receiving unit can directly display this value to the user.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>m/s</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Instantaneous Speed - Fractional</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Fractional instantaneous speed.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>1/256 m/s</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Stride Count</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated strides.
+					This value is incremented once for every two footfalls.
+					This is a required field.
+				</Value>
+				<Units>Strides</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Update Latency</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The time elapsed between the last speed and distance
+					computation and the transmission of this message.
+					Set to 0x00 when unused.	
+				</Value>
+				<Units>1/32 sec</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>2</Number>
+			<Name>Base Template</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x01</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Cadence - Integer</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Measure of strides accumulated in time.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>Strides per Minute</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Cadence - Fractional</Description>
+				<Length>Upper 4 bits</Length>
+				<Value>
+					Fractional distance.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>1/16 Strides per Minute</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Instantaneous Speed - Integer</Description>
+				<Length>Lower 4 bits</Length>
+				<Value>
+					Instantaneous speed is intended to be appropriately filtered by the SDM,
+					such that the receiving unit can directly display this value to the user.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>m/s</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Instantaneous Speed - Fractional</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Fractional instantaneous speed.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>1/256 m/s</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Status</Description>
+				<Length>1 Byte</Length>
+				<Value>SDM status flags</Value>
+				<Units>Binary</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>7,6</Number>
+						<Contents>SDM Location</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>Laces</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>Midsole</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>Other</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Ankle</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>5,4</Number>
+						<Contents>Battery Status</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>OK (New)</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>OK (Good)</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>OK</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Low Battery</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>3,2</Number>
+						<Contents>SDM Health</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>OK</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>Error</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>Warning</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>1,0</Number>
+						<Contents>Use State</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>Inactive</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>Active</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+				</Bits>
+			</Field>
+		</Page>
+		<Page>
+			<Number>3</Number>
+			<Name>Calories</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x02</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Cadence - Integer</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Measure of strides accumulated in time.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>Strides per Minute</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Cadence - Fractional</Description>
+				<Length>Upper 4 bits</Length>
+				<Value>
+					Fractional distance.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>1/16 Strides per Minute</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Instantaneous Speed - Integer</Description>
+				<Length>Lower 4 bits</Length>
+				<Value>
+					Instantaneous speed is intended to be appropriately filtered by the SDM,
+					such that the receiving unit can directly display this value to the user.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>m/s</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Instantaneous Speed - Fractional</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Fractional instantaneous speed.
+					Set to 0x00 when unused.
+				</Value>
+				<Units>1/256 m/s</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Calories</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated calories
+					If page 3 is used, this field must be valid.
+				</Value>
+				<Units>kcal</Units>
+				<Rollover>256</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Status</Description>
+				<Length>1 Byte</Length>
+				<Value>SDM status flags</Value>
+				<Units>Binary</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>7,6</Number>
+						<Contents>SDM Location</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>Laces</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>Midsole</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>Other</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Ankle</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>5,4</Number>
+						<Contents>Battery Status</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>OK (New)</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>OK (Good)</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>OK</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Low Battery</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>3,2</Number>
+						<Contents>SDM Health</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>OK</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>Error</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>Warning</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>1,0</Number>
+						<Contents>Use State</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>Inactive</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>01</ValueBinary>
+								<Meaning>Active</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>10</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>11</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+				</Bits>
+			</Field>
+		</Page>
+	</MainDataPages>
+	<RequestedSummaryDataPages>
+		<Page>
+			<Number>16</Number>
+			<Name>Distance and Strides Since Battery Reset</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x10</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Time - Fractional LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated strides since battery change.
+					This value is incremented once for every two footfalls.
+					Set to 0 when unused.
+				</Value>
+				<Units>strides</Units>
+				<Rollover>16777216</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Time - Fractional</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated strides since battery change.
+					This value is incremented once for every two footfalls.
+					Set to 0 when unused.
+				</Value>
+				<Units>strides</Units>
+				<Rollover>16777216</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Time - Fractional MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated strides since battery change.
+					This value is incremented once for every two footfalls.
+					Set to 0 when unused.
+				</Value>
+				<Units>strides</Units>
+				<Rollover>16777216</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Distance LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated distance. Set to 0 when unused.	
+				</Value>
+				<Units>1/256 meters</Units>
+				<Rollover>4294967296 (i.e 16777216 meters)</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Distance</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated distance. Set to 0 when unused.	
+				</Value>
+				<Units>1/256 meters</Units>
+				<Rollover>4294967296 (i.e 16777216 meters)</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Distance</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated distance. Set to 0 when unused.	
+				</Value>
+				<Units>1/256 meters</Units>
+				<Rollover>4294967296 (i.e 16777216 meters)</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Distance MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Accumulated distance. Set to 0 when unused.	
+				</Value>
+				<Units>1/256 meters</Units>
+				<Rollover>4294967296 (i.e 16777216 meters)</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>22</Number>
+			<Name>Capabilities</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x16</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Capabilities</Description>
+				<Length>1 Byte</Length>
+				<Value>Capabilities Bit Field</Value>
+				<Units>Binary</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>6,7</Number>
+						<Contents>Reserved</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>00</ValueBinary>
+								<Meaning>Default - Set values to 0</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>5</Number>
+						<Contents>Calorie Capability Byte 6 of page 0x03</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Calories is not valid</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Calories is valid</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>4</Number>
+						<Contents>Cadence Capability Bytes 3-4 of pp 0x02-15</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Cadence is not valid</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Cadence is valid</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>3</Number>
+						<Contents>Latency Capability Byte 7 of Page 0x01</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Latency is not valid</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Latency is valid</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>2</Number>
+						<Contents>Speed Capability Bytes 5-6 of pp 0x01-15</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Speed is not valid</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Speed is valid</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>1</Number>
+						<Contents>Distance Capability Bytes 5-6 of Page 0x01</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Distance is not valid</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Distance is valid</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+					<Bit>
+						<Number>0</Number>
+						<Contents>Time Stamp Capability Bytes 1-2 of Page 0x01</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0</ValueBinary>
+								<Meaning>Time is not valid</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1</ValueBinary>
+								<Meaning>Time is valid</Meaning>
+							</Enumeration>
+						</Enumerations>
+					</Bit>
+				</Bits>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Reserved for Future use.
+					Set all bytes to 0xFF.
+					Do not interpret these bytes.
+					</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Reserved for Future use.
+					Set all bytes to 0xFF.
+					Do not interpret these bytes.
+					</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Reserved for Future use.
+					Set all bytes to 0xFF.
+					Do not interpret these bytes.
+					</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Reserved for Future use.
+					Set all bytes to 0xFF.
+					Do not interpret these bytes.
+					</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Reserved for Future use.
+					Set all bytes to 0xFF.
+					Do not interpret these bytes.
+					</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Reserved for Future use.
+					Set all bytes to 0xFF.
+					Do not interpret these bytes.
+					</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+	</RequestedSummaryDataPages>
+	<CommonDataPages>
+		<Page>
+			<Number>70</Number>
+			<Name>Request Data Page</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Command ID</Description>
+				<Length>1 Byte</Length>
+				<Value>70 (0x46) – Data Page Request</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Subfield 1</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Subfield 2</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Requested Transmission Response</Description>
+				<Length>1 Byte</Length>
+				<Value>Refer to ANT+ Common Pages</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Requested Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Requested Summary Data Page Number</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Command Type</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 1 (0x01) for Request Data Page</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+		<Page>
+			<Number>80</Number>
+			<Name>Manufacturer's Identification</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>HW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Serial Number (Bits 0 – 7)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Serial Number (Bits 8 – 15)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Serial Number (Bits 16 – 23)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Serial Number (Bits 24 – 31)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+		<Page>
+			<Number>81</Number>
+			<Name>Product Information</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>SW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Manufacturer ID LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Manufacturer ID MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Model Number LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Model Number MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+	</CommonDataPages>
+</Profile>

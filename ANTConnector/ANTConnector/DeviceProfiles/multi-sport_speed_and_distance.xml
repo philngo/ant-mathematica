@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+	<InformativeText>
+		A multi-sport speed and distance monitor (MSM) is a personal device
+		that allows the user to measure the distance traveled and computes
+		the speed at which they are traveling. Unlike stride based systems,
+		this class of sensor may use satellite positioning, radar, or other
+		technologies to measure the distance traveled, allowing MSMs to be
+		used for a wide range of activities with varied user motion and
+		speed ranges.  
+	</InformativeText>
+	<ChannelConfiguration>
+		<ChannelType>1</ChannelType>
+		<NetworkKey>B9A521FBBD72C345</NetworkKey>
+		<RFChannelFrequency>57</RFChannelFrequency>
+		<TransmissionType>0</TransmissionType>
+		<DeviceType>15</DeviceType>
+		<DeviceNumber>0</DeviceNumber>
+		<ChannelPeriod>8192</ChannelPeriod>
+		<SearchTimeout>30</SearchTimeout>
+	</ChannelConfiguration>
+	<MainDataPages>
+		<Page>
+			<Number>1</Number>
+			<Name>Speed and Distance</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>1 (0x01) – Data Page 1: Speed and Distance</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Set to 0xFF. Receivers shall not interpret this value</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Timestamp LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					2 byte accumulating timestamp field.
+                   	This is a required data field and must
+                   	be populated when this page is sent.
+                </Value>
+				<Units>1/1024 seconds</Units>
+				<Rollover>64 s</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Timestamp MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					2 byte accumulating timestamp field.
+                   	This is a required data field and must
+                   	be populated when this page is sent.
+                </Value>
+				<Units>1/1024 seconds</Units>
+				<Rollover>64 s</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Distance LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					2 Byte accumulating distance field.
+					This is a required data field and must be populated when this page is sent.
+				</Value>
+				<Units>0.1 m</Units>
+				<Rollover>6553.6 m</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Distance MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					2 Byte accumulating distance field.
+					This is a required data field and must be populated when this page is sent.
+				</Value>
+				<Units>0.1 m</Units>
+				<Rollover>6553.6 m</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Speed LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Instantaneous speed.
+					Value = 0.0 m/s to 65.534 m/s
+					Invalid = 65535 (0xFFFF)
+				</Value>
+				<Units>0.001m/s</Units>
+				<Rollover>Max Value: 65.534m/s (146.5 mi/h)</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Speed MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Instantaneous speed.
+					Value = 0.0 m/s to 65.534 m/s
+					Invalid = 65535 (0xFFFF)
+				</Value>
+				<Units>0.001m/s</Units>
+				<Rollover>Max Value: 65.534m/s (146.5 mi/h)</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>2</Number>
+			<Name>Latitude and Longitude</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>Data Page Number = 0x02</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Latitude (Bits 0-7)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A signed value ranging from - ￼pi to + ￼pi￼ in a two’s complement system.
+					Resulting in a resolution of 0.15m.
+				</Value>
+				<Units>28 Bit Semicircles</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Latitude (Bits 8-15)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A signed value ranging from - ￼pi to + ￼pi￼ in a two’s complement system.
+					Resulting in a resolution of 0.15m.
+				</Value>
+				<Units>28 Bit Semicircles</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Latitude (Bits 16-23)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A signed value ranging from - ￼pi to + ￼pi￼ in a two’s complement system.
+					Resulting in a resolution of 0.15m.
+				</Value>
+				<Units>28 Bit Semicircles</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Latitude (Bits 24-27)(Bits 7-4 of Byte 4)</Description>
+				<Length>Upper 4 Bits</Length>
+				<Value>
+					A signed value ranging from - ￼pi to + ￼pi￼ in a two’s complement system.
+					Resulting in a resolution of 0.15m.
+				</Value>
+				<Units>28 Bit Semicircles</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Longitude (Bits 0-3)(Bits 3-0 of Byte 4)</Description>
+				<Length>Lower 4 Bits</Length>
+				<Value>
+					A signed value ranging from - ￼pi to + ￼pi￼ in a two’s complement system.
+					Resulting in a resolution of 0.15m.
+				</Value>
+				<Units>28 Bit Semicircles</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Longitude (Bits 4-11)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A signed value ranging from - ￼pi to + ￼pi￼ in a two’s complement system.
+					Resulting in a resolution of 0.15m.
+				</Value>
+				<Units>28 Bit Semicircles</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Longitude (Bits 12-19)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A signed value ranging from - ￼pi to + ￼pi￼ in a two’s complement system.
+					Resulting in a resolution of 0.15m.
+				</Value>
+				<Units>28 Bit Semicircles</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Longitude (Bits 20-27)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					A signed value ranging from - ￼pi to + ￼pi￼ in a two’s complement system.
+					Resulting in a resolution of 0.15m.
+				</Value>
+				<Units>28 Bit Semicircles</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+		</Page>
+		<Page>
+			<Number>3</Number>
+			<Name>Heading and Elevation</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>3 (0x03) – Data Page 3: Heading and Elevation</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>0xFF</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Fix Type(Bits 7-4 of Byte 4)</Description>
+				<Length>Upper 4 Bits</Length>
+				<Value>
+					Enumeration
+				</Value>
+				<Units>N/A</Units>
+				<Rollover>N/A</Rollover>
+				<Bits>
+					<Bit>
+						<Number>3,2,1,0</Number>
+						<Contents>Fix Type</Contents>
+						<Enumerations>
+							<Enumeration>
+								<ValueBinary>0000</ValueBinary>
+								<Meaning>None</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0001</ValueBinary>
+								<Meaning>Searching</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0010</ValueBinary>
+								<Meaning>Propagating</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0011</ValueBinary>
+								<Meaning>Last Known Position</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0100</ValueBinary>
+								<Meaning>2D</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0101</ValueBinary>
+								<Meaning>2D WAAS</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0110</ValueBinary>
+								<Meaning>2D Differential</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>0111</ValueBinary>
+								<Meaning>3D</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1000</ValueBinary>
+								<Meaning>3D WAAS</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1001</ValueBinary>
+								<Meaning>3D Differential</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1010</ValueBinary>
+								<Meaning></Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1011</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1000</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1101</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1110</ValueBinary>
+								<Meaning>Reserved</Meaning>
+							</Enumeration>
+							<Enumeration>
+								<ValueBinary>1111</ValueBinary>
+								<Meaning>Invalid</Meaning>
+							</Enumeration>
+						</Enumerations>
+						</Bit>
+					</Bits>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Heading (Bits 0-3)(Bits 3-0 of Byte 4)</Description>
+				<Length>Lower 4 Bits</Length>
+				<Value>
+					The heading with respect to True North.
+					Invalid = 0xFFF
+				</Value>
+				<Units>0.1 degrees</Units>
+				<Rollover>Max Value: 359.9 degrees</Rollover>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Heading (Bits 4-11)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The heading with respect to True North.
+					Invalid = 0xFFF
+				</Value>
+				<Units>0.1 degrees</Units>
+				<Rollover>Max Value: 359.9 degrees</Rollover>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Elevation LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Value = Elevation – 500m
+					i.e. a value of 0 (0x0000) means
+					-500m of altitude. Invalid = 0xFFFF
+				</Value>
+				<Units>0.2m</Units>
+				<Rollover>Max Value: 12606.8 m (41360 ft)</Rollover>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Elevation MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					Value = Elevation – 500m
+					i.e. a value of 0 (0x0000) means
+					-500m of altitude. Invalid = 0xFFFF
+				</Value>
+				<Units>0.2m</Units>
+				<Rollover>Max Value: 12606.8 m (41360 ft)</Rollover>
+			</Field>
+		</Page>
+	</MainDataPages>
+	<CommonDataPages>
+		<Page>
+			<Number>80</Number>
+			<Name>Manufacturer's Identification</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>HW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Serial Number (Bits 0 – 7)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Serial Number (Bits 8 – 15)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Serial Number (Bits 16 – 23)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Serial Number (Bits 24 – 31)</Description>
+				<Length>1 Byte</Length>
+				<Value>
+					The lowest 32 bits of the serial number.
+					Value 0xFFFFFFFF to be used for devices without serial numbers.
+				</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+		<Page>
+			<Number>81</Number>
+			<Name>Product Information</Name>
+			<Field>
+				<Byte>0</Byte>
+				<Description>Data Page Number</Description>
+				<Length>1 Byte</Length>
+				<Value>0x50 – Common Page 80</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>1</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>2</Byte>
+				<Description>Reserved</Description>
+				<Length>1 Byte</Length>
+				<Value>Value = 0xFF</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>3</Byte>
+				<Description>SW Revision</Description>
+				<Length>1 Byte</Length>
+				<Value>Value: 255 (0xFF) - Invalid</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>4</Byte>
+				<Description>Manufacturer ID LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>5</Byte>
+				<Description>Manufacturer ID MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>Contact the ANT+ Alliance for a current list of manufacturing IDs, or to receive a manufacturing ID.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>6</Byte>
+				<Description>Model Number LSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+			<Field>
+				<Byte>7</Byte>
+				<Description>Model Number MSB</Description>
+				<Length>1 Byte</Length>
+				<Value>To be set by the manufacturer.</Value>
+				<Units>N/A</Units>
+			</Field>
+		</Page>
+	</CommonDataPages>
+</Profile>
