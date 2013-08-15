@@ -77,7 +77,7 @@
 							</Enumeration>
 							<Enumeration>
 								<ValueBinary>10</ValueBinary>
-								<Meaning>Local Time Supported & Set</Meaning>
+								<Meaning>Local Time Supported and Set</Meaning>
 							</Enumeration>
 							<Enumeration>
 								<ValueBinary>11</ValueBinary>
@@ -99,7 +99,7 @@
 							</Enumeration>
 							<Enumeration>
 								<ValueBinary>10</ValueBinary>
-								<Meaning>UTC Time Supported & Set</Meaning>
+								<Meaning>UTC Time Supported and Set</Meaning>
 							</Enumeration>
 							<Enumeration>
 								<ValueBinary>11</ValueBinary>
@@ -148,7 +148,7 @@
 					<Bit>
 						<Number>0</Number>
 						<Contents>Page Support</Contents>
-						<Enumeration>
+						<Enumerations>
 							<Enumeration>
 								<ValueBinary>0</ValueBinary>
 								<Meaning>Page 0 Support</Meaning>

@@ -173,7 +173,7 @@
 				<Length>1 Byte</Length>
 				<Value>Value = 0xFF</Value>
 				<Units>N/A</Units>
-				<Rollover>N/A</Rollover
+				<Rollover>N/A</Rollover>
 			</Field>
 			<Field>
 				<Byte>6</Byte>

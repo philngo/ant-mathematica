@@ -27,6 +27,6 @@
 		<DeviceNumber>1-65535</DeviceNumber>
 		<ChannelPeriod>8192</ChannelPeriod>
 		<SearchTimeout>30</SearchTimeout>
-		<TrasmitPower>-10</TransmitPower>
+		<TransmitPower>-10</TransmitPower>
 	</ChannelConfiguration>
 </Profile>

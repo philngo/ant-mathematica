@@ -43,7 +43,7 @@
 					Bit 7: Pedal Differentiation
 					1 - Right Pedal Power Contribution
 					0 – Unknown Pedal Power Contribution
-					Bits 0-6: Pedal Power Percent</Value>
+					Bits 0-6: Pedal Power Percent
 					Special Values:
 					0xFF – pedal power not used
 				</Value>
@@ -266,6 +266,7 @@
 				</Value>
 				<Units>￼1/32Nm</Units>
 				<Rollover>￼￼2048Nm</Rollover>
+			</Field>
 		</Page>
 	</MainDataPages>
 	<CommonDataPages>
