@@ -1006,27 +1006,33 @@ ANTDeviceConnect[deviceProfileType_String] :=
 			$deviceData = {};
 			longName = Null;
 			Switch[deviceProfileType,
-				"SDM",
-					longName = "stride_based_speed_and_distance";
-					$currentDevice = "SDM";,
 				"BPowM",
 					longName = "bicycle_power";
 					$currentDevice = "BPowM";,
-				"HRM",
-					longName = "heart_rate";
-					$currentDevice = "HRM";,
+                "BSCM",
+                   longName = "bike_speed_and_cadence";
+                   $currentDevice = "BSCM";,
 				"BPressM",
 					longName = "blood_pressure";
 					$currentDevice = "BPressM";,
 				"ENVM",
 					longName = "environment";
 					$currentDevice = "ENVM";,
-				"BSCM",
-					longName = "bike_speed_and_cadence";
-					$currentDevice = "BSCM";,
+                "FE",
+                    longName = "fitness_equipment";
+                    $currentDevice = "FE";,
+                "HRM",
+                     longName = "heart_rate";
+                   $currentDevice = "HRM";,
 				"MSM",
 					longName = "multi-sport_speed_and_distance";
 					$currentDevice = "MSM";,
+                "SDM",
+                    longName = "stride_based_speed_and_distance";
+                    $currentDevice = "SDM";,
+                "WS",
+                    longName = "weight_scale";
+                    $currentDevice = "WS";,
 				_,
 					longName = Null;
 			];
